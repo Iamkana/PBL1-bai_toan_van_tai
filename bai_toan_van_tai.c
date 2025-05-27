@@ -44,7 +44,7 @@ void Xuat(int CongY);
 int main() {
     AnCursor();
     CachNhap();
-    while(1){
+    while(1) {
         if (Menu()) return 0;
         Xuat(0);
         PhuongPhapTheVi();
@@ -103,7 +103,7 @@ void Nhap() {
     XuLyCanBang();
 }
 
-void NhapTay(){
+void NhapTay() {
     Mau(14); // đặt cho chữ
     ToaDoxy(19 + 13, 1); printf("Nhập vào số lượng CUNG và CẦU: ");
     ToaDoxy(31, 4); printf("CUNG");
@@ -116,10 +116,8 @@ void NhapTay(){
     Mau(DoNhat); // đặt cho chữ  
     ToaDoxy(31, 6); printf("[   ]");
 
-    while(1){
-        if (m != 0 && n != 0) {
-            break;
-        }
+    while (1) {
+        if (m != 0 && n != 0) break;
         char key = _getch();
 
         // Xóa dấu [ ] hiện tại
@@ -127,14 +125,14 @@ void NhapTay(){
         printf("     "); // Xóa [ ] 
         // Cập nhật lại số (nếu có)
         ToaDoxy(31 + currentPos * 25 + 1, 6);
-        if (currentPos == 0 && m != 0) printf("%d", m);
-        if (currentPos == 1 && n != 0) printf("%d", n);
+        if (currentPos == 0 && m != 0) {printf("%d", m);}
+        if (currentPos == 1 && n != 0) {printf("%d", n);}
 
         // Xử lý phím
         if (key == 0 || key == -32) { // Phím đặc biệt (mũi tên)
             key = _getch();
-            if (key == 75 && currentPos > 0) currentPos--; // Trái
-            if (key == 77 && currentPos < 1) currentPos++; // Phải
+            if (key == 75 && currentPos > 0) {currentPos--;} // Trái
+            if (key == 77 && currentPos < 1) {currentPos++;} // Phải
             inputIndex = 0;
             input[0] = '\0';
         }
@@ -145,8 +143,8 @@ void NhapTay(){
         Mau(7); // Trở lại màu trắng
 
         // Nhập số
-        if (key >= '0' && key <= '9' && inputIndex <= 3){
-            if (inputIndex == 3){
+        if (key >= '0' && key <= '9' && inputIndex <= 3) {
+            if (inputIndex == 3) {
                 inputIndex = 0;
                 input[0] = '\0';
             }
@@ -163,7 +161,7 @@ void NhapTay(){
             input[0] = '\0';
             ToaDoxy(31 + currentPos * 25 + 1, 6);
             printf("%d", currentPos == 0 ? m : n);
-            if (currentPos < 1){
+            if (currentPos < 1) {
                 ToaDoxy(31 + currentPos * 25, 6); 
                 printf("     "); 
                 ToaDoxy(31 + currentPos * 25 + 1, 6);
@@ -173,7 +171,7 @@ void NhapTay(){
                 goto PLACE1;
             }
         }
-        else if (key == 8 && inputIndex > 0){ // Nếu là dấu backspace thì sẽ xóa 1 kí tự
+        else if (key == 8 && inputIndex > 0) { // Nếu là dấu backspace thì sẽ xóa 1 kí tự
             input[--inputIndex] = '\0';
             ToaDoxy(31 + currentPos * 25 + 1, 6);
             printf("%s", input);
@@ -184,7 +182,7 @@ void NhapTay(){
     
     // Nhập vào số hàng trong cung
     Mau(Vang); ToaDoxy(19 + 13, 1); printf("Nhập vào số lượng hàng hóa trong CUNG: ");
-    for (int i = 0; i < m; i++){
+    for (int i = 0; i < m; i++) {
         Mau(Vang); ToaDoxy(26 + i * 10, 4); printf("Cung %d", i + 1);
         VeKhung(25 + i * 10, 5, 7, 3);
     }
@@ -195,10 +193,10 @@ void NhapTay(){
     Mau(DoDam); // đặt cho chữ 
     ToaDoxy(26, 6); printf("[   ]");
 
-    while(1){
+    while (1) {
         int Full = 1;
-        for(int i = 0; i < m; i++){
-            if (Cung[i] == 0) Full = 0;
+        for (int i = 0; i < m; i++) {
+            if (Cung[i] == 0) {Full = 0;}
         }
         if (Full) break;
 
@@ -207,8 +205,8 @@ void NhapTay(){
         ToaDoxy(26 + currentPos * 10, 6); // 10 là khoảng cách giữa 2 ô
         printf("     "); // Xóa [ ] 
         // Cập nhật lại số (nếu có)
-        for (int i = 0; i < m; i++){
-            if (Cung[i] != 0){
+        for (int i = 0; i < m; i++) {
+            if (Cung[i] != 0) {
                 ToaDoxy(27 + i * 10, 6);
                 printf("%d", Cung[i]);
             }
@@ -217,8 +215,8 @@ void NhapTay(){
         // Xử lý phím
         if (key == 0 || key == -32) { // Phím đặc biệt (mũi tên)
             key = _getch();
-            if (key == 75 && currentPos > 0) currentPos--; // Trái
-            if (key == 77 && currentPos < m - 1) currentPos++; // Phải
+            if (key == 75 && currentPos > 0) {currentPos--;} // Trái
+            if (key == 77 && currentPos < m - 1) {currentPos++;} // Phải
             inputIndex = 0;
             input[0] = '\0';
         }
@@ -229,8 +227,8 @@ void NhapTay(){
         Mau(7); // Trở lại màu trắng
 
         // Nhập số
-        if (key >= '0' && key <= '9' && inputIndex <= 3){
-            if (inputIndex == 3){
+        if (key >= '0' && key <= '9' && inputIndex <= 3) {
+            if (inputIndex == 3) {
                 inputIndex = 0;
                 input[0] = '\0';
             }
@@ -242,19 +240,19 @@ void NhapTay(){
         // Nhấn Enter để xác nhận
         else if (key == 13 && inputIndex > 0) {
             int i = 0;
-            while(i != currentPos) i++;
+            while (i != currentPos) {i++;}
             Cung[i] = atoi(input);
             
             inputIndex = 0;
             input[0] = '\0';
             ToaDoxy(27 + currentPos * 10, 6);
             printf("%d", Cung[i]);
-            if (currentPos < m - 1){
+            if (currentPos < m - 1) {
                 ToaDoxy(26 + currentPos * 10, 6); // 10 là khoảng cách giữa 2 ô
                 printf("     "); // Xóa [ ] 
                 // Cập nhật lại số (nếu có)
-                for (int i = 0; i < m; i++){
-                    if (Cung[i] != 0){
+                for (int i = 0; i < m; i++) {
+                    if (Cung[i] != 0) {
                         ToaDoxy(27 + i * 10, 6);
                         printf("%d", Cung[i]);
                     }
@@ -263,7 +261,7 @@ void NhapTay(){
                 goto PLACE2;    
             }
         }
-        else if (key == 8 && inputIndex > 0){ // Nếu là dấu backspace thì sẽ xóa 1 kí tự
+        else if (key == 8 && inputIndex > 0) { // Nếu là dấu backspace thì sẽ xóa 1 kí tự
             input[--inputIndex] = '\0';
             ToaDoxy(27 + currentPos * 10, 6);
             printf("%s", input);
@@ -274,7 +272,7 @@ void NhapTay(){
 
     // Nhập số lượng hàng hóa trong cầu
     Mau(Vang); ToaDoxy(19 + 13, 1); printf("Nhập vào số lượng hàng hóa trong CAU: ");
-    for (int i = 0; i < n; i++){
+    for (int i = 0; i < n; i++) {
         Mau(Vang); ToaDoxy(26 + i * 10, 4); printf("Cau %d", i + 1);
         VeKhung(25 + i * 10, 5, 7, 3);
     }
@@ -284,10 +282,10 @@ void NhapTay(){
     Mau(DoDam); // đặt cho chữ 
     ToaDoxy(26, 6); printf("[   ]");
 
-    while(1){
+    while (1) {
         int Full = 1;
-        for(int i = 0; i < n; i++){
-            if (Cau[i] == 0) Full = 0;
+        for(int i = 0; i < n; i++) {
+            if (Cau[i] == 0) {Full = 0;}
         }
         if (Full) break;
 
@@ -296,8 +294,8 @@ void NhapTay(){
         ToaDoxy(26 + currentPos * 10, 6); // 10 là khoảng cách giữa 2 ô
         printf("     "); // Xóa [ ] 
         // Cập nhật lại số (nếu có)
-        for (int i = 0; i < n; i++){
-            if (Cau[i] != 0){
+        for (int i = 0; i < n; i++) {
+            if (Cau[i] != 0) {
                 ToaDoxy(27 + i * 10, 6);
                 printf("%d", Cau[i]);
             }
@@ -306,8 +304,8 @@ void NhapTay(){
         // Xử lý phím
         if (key == 0 || key == -32) { // Phím đặc biệt (mũi tên)
             key = _getch();
-            if (key == 75 && currentPos > 0) currentPos--; // Trái
-            if (key == 77 && currentPos < n - 1) currentPos++; // Phải
+            if (key == 75 && currentPos > 0) {currentPos--;} // Trái
+            if (key == 77 && currentPos < n - 1) {currentPos++;} // Phải
             inputIndex = 0;
             input[0] = '\0';
         }
@@ -318,8 +316,8 @@ void NhapTay(){
         Mau(7); // Trở lại màu trắng
 
         // Nhập số
-        if (key >= '0' && key <= '9' && inputIndex <= 3){
-            if (inputIndex == 3){
+        if (key >= '0' && key <= '9' && inputIndex <= 3) {
+            if (inputIndex == 3) {
                 inputIndex = 0;
                 input[0] = '\0';
             }
@@ -331,19 +329,19 @@ void NhapTay(){
         // Nhấn Enter để xác nhận
         else if (key == 13 && inputIndex > 0) {
             int i = 0;
-            while(i != currentPos) i++;
+            while (i != currentPos) {i++;}
             Cau[i] = atoi(input);
             
             inputIndex = 0;
             input[0] = '\0';
             ToaDoxy(27 + currentPos * 10, 6);
             printf("%d", Cau[i]);
-            if (currentPos < n - 1){
+            if (currentPos < n - 1) {
                 ToaDoxy(26 + currentPos * 10, 6); // 10 là khoảng cách giữa 2 ô
                 printf("     "); // Xóa [ ] 
                 // Cập nhật lại số (nếu có)
-                for (int i = 0; i < n; i++){
-                    if (Cau[i] != 0){
+                for (int i = 0; i < n; i++) {
+                    if (Cau[i] != 0) {
                         ToaDoxy(27 + i * 10, 6);
                         printf("%d", Cau[i]);
                     }
@@ -352,7 +350,7 @@ void NhapTay(){
                 goto PLACE3;    
             }
         }
-        else if (key == 8 && inputIndex > 0){ // Nếu là dấu backspace thì sẽ xóa 1 kí tự
+        else if (key == 8 && inputIndex > 0) { // Nếu là dấu backspace thì sẽ xóa 1 kí tự
             input[--inputIndex] = '\0';
             ToaDoxy(27 + currentPos * 10, 6);
             printf("%s", input);
@@ -363,9 +361,9 @@ void NhapTay(){
 
     // Nhập số chi phí
     Mau(Vang); ToaDoxy(35, 1); printf("Nhap ma tran chi phi : ");
-    for (int i = 0; i < m; i++){
+    for (int i = 0; i < m; i++) {
         Mau(Vang); ToaDoxy(18, 6 + i * 3); printf("Cung %d", i + 1);
-        for (int j = 0; j < n; j++){
+        for (int j = 0; j < n; j++) {
             Mau(Vang); ToaDoxy(25 + j * 10, 4); printf("Cầu %d", j + 1);
             VeKhung(25 + j * 10, 5 + i * 3, 7, 3);
             ChiPhi[i][j] = 0;
@@ -378,11 +376,11 @@ void NhapTay(){
     Mau(DoDam); // đặt cho chữ 
     ToaDoxy(26, 6); printf("[   ]");
 
-    while(1){
+    while (1) {
         int Full = 1;
-        for (int i = 0; i < m && Full; i++){
-            for (int j = 0; j < n; j++){
-                if (ChiPhi[i][j] == 0){
+        for (int i = 0; i < m && Full; i++) {
+            for (int j = 0; j < n; j++) {
+                if (ChiPhi[i][j] == 0) {
                     Full = 0;
                     break;
                 }
@@ -395,11 +393,11 @@ void NhapTay(){
         ToaDoxy(26 + currentPosX * 10, 6 + currentPosY * 3); // 10 là khoảng cách giữa 2 ô
         printf("     "); // Xóa [ ] 
         // Cập nhật lại số (nếu có)
-        for (int i = 0; i < m; i++){
-            for (int j = 0; j < n; j++){
-                if (ChiPhi[i][j] != 0){
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (ChiPhi[i][j] != 0) {
                     ToaDoxy(27 + j * 10, 6 + i * 3);
-                    printf("%d",ChiPhi[i][j]);
+                    printf("%d", ChiPhi[i][j]);
                 }
             }
         }
@@ -407,10 +405,10 @@ void NhapTay(){
         // Xử lý phím
         if (key == 0 || key == -32) { // Phím đặc biệt (mũi tên)
             key = _getch();
-            if (key == 75 && currentPosX > 0) currentPosX--; // Left
-            if (key == 77 && currentPosX < n - 1) currentPosX++; // Right
-            if (key == 72 && currentPosY > 0) currentPosY--; // Up
-            if (key == 80 && currentPosY < m - 1) currentPosY++; // Down
+            if (key == 75 && currentPosX > 0) {currentPosX--;} // Trái
+            if (key == 77 && currentPosX < n - 1) {currentPosX++;} // Phải
+            if (key == 72 && currentPosY > 0) {currentPosY--;} // Lên
+            if (key == 80 && currentPosY < m - 1) {currentPosY++;} // Xuống
             inputIndex = 0;
             input[0] = '\0';
         }
@@ -420,8 +418,8 @@ void NhapTay(){
         Mau(7);
 
         // Nhập số
-        if (key >= '0' && key <= '9' && inputIndex <= 3){
-            if (inputIndex == 3){
+        if (key >= '0' && key <= '9' && inputIndex <= 3) {
+            if (inputIndex == 3) {
                 inputIndex = 0;
                 input[0] = '\0';
             }
@@ -433,38 +431,38 @@ void NhapTay(){
         // Nhấn Enter để xác nhận
         else if (key == 13 && inputIndex > 0) {
             int i = 0, j = 0;
-            while(i != currentPosY) i++;
-            while(j != currentPosX) j++;
+            while (i != currentPosY) {i++;}
+            while (j != currentPosX) {j++;}
             ChiPhi[i][j] = atoi(input);
             
             inputIndex = 0;
             input[0] = '\0';
             ToaDoxy(27 + currentPosX * 10, 6 + currentPosY * 3);
             printf("%d", ChiPhi[i][j]);
-            if (currentPosX < n - 1 && currentPosY <= m - 1){
+            if (currentPosX < n - 1 && currentPosY <= m - 1) {
                 ToaDoxy(26 + currentPosX * 10, 6 + currentPosY * 3); 
                 printf("     "); // Xóa [ ] 
                 // Cập nhật lại số (nếu có)
-                for (int i = 0; i < m; i++){
-                    for (int j = 0; j < n; j++){
-                        if (ChiPhi[i][j] != 0){
+                for (int i = 0; i < m; i++) {
+                    for (int j = 0; j < n; j++) {
+                        if (ChiPhi[i][j] != 0) {
                             ToaDoxy(27 + j * 10, 6 + i * 3);
-                            printf("%d",ChiPhi[i][j]);
+                            printf("%d", ChiPhi[i][j]);
                         }
                     }
                 }
                 currentPosX++;
                 goto PLACE4;    
             }
-            else if(currentPosX == n - 1 && currentPosY < m - 1){
+            else if (currentPosX == n - 1 && currentPosY < m - 1) {
                 ToaDoxy(26 + currentPosX * 10, 6 + currentPosY * 3); 
                 printf("     "); // Xóa [ ] 
                 // Cập nhật lại số (nếu có)
-                for (int i = 0; i < m; i++){
-                    for (int j = 0; j < n; j++){
-                        if (ChiPhi[i][j] != 0){
+                for (int i = 0; i < m; i++) {
+                    for (int j = 0; j < n; j++) {
+                        if (ChiPhi[i][j] != 0) {
                             ToaDoxy(27 + j * 10, 6 + i * 3);
-                            printf("%d",ChiPhi[i][j]);
+                            printf("%d", ChiPhi[i][j]);
                         }
                     }
                 }
@@ -473,7 +471,7 @@ void NhapTay(){
                 goto PLACE4;    
             }
         }
-        else if (key == 8 && inputIndex > 0){ // Nếu là dấu backspace thì sẽ xóa 1 kí tự
+        else if (key == 8 && inputIndex > 0) { // Nếu là dấu backspace thì sẽ xóa 1 kí tự
             input[--inputIndex] = '\0';
             ToaDoxy(27 + currentPosX * 10, 6 + currentPosY * 3);
             printf("%s", input);
@@ -512,9 +510,7 @@ void Xuat(int CongY) {
         }
         
         for (int j = 0; j < n; j++) {
-            if (PhanPhoi[i][j] == 0) {
-                printf("-\t");
-            }
+            if (PhanPhoi[i][j] == 0) {printf("-\t");}
             else {
                 printf("%d(%d)\t", PhanPhoi[i][j], ChiPhi[i][j]);
                 // Không tính chi phí cho các ô giả
@@ -590,7 +586,7 @@ void PhuongPhapChiPhiNhoNhat() {
                 }
             }
         }
-        if (hang == -1 || cot == -1) {break;}
+        if (hang == -1 || cot == -1) break;
         int SoLuong = (CungConLai[hang] < CauConLai[cot]) ? CungConLai[hang] : CauConLai[cot];
         PhanPhoi[hang][cot] = SoLuong;
         CungConLai[hang] -= SoLuong;
@@ -606,7 +602,7 @@ void PhuongPhapChiPhiNhoNhat() {
             }
             n++;
         }
-        else if (KhongCanBang == 2) {
+        else {
             for (int j = 0; j < n; j++) {
                 int SoLuong = (CungConLai[m] < CauConLai[j]) ? CungConLai[m] : CauConLai[j];
                 PhanPhoi[m][j] = SoLuong;
@@ -636,16 +632,17 @@ void PhuongPhapVogel() {
 
         // Tính penalty cho từng hàng
         for (int i = 0; i < m; i++) {
-            if (CungConLai[i] == 0) {continue;} // Bỏ qua hàng đã hết cung
+            if (CungConLai[i] == 0) continue; // Bỏ qua hàng đã hết cung
 
             int Min1 = INTMAX, Min2 = INTMAX;
             for (int j = 0; j < n; j++) {
-                if (CauConLai[j] == 0) {continue;} // Bỏ qua cột đã hết cầu
+                if (CauConLai[j] == 0) continue; // Bỏ qua cột đã hết cầu
 
                 if (ChiPhi[i][j] < Min1) {
                     Min2 = Min1;
                     Min1 = ChiPhi[i][j];
-                } else if (ChiPhi[i][j] < Min2) {
+                }
+                else if (ChiPhi[i][j] < Min2) {
                     Min2 = ChiPhi[i][j];
                 }
             }
@@ -660,16 +657,17 @@ void PhuongPhapVogel() {
 
         // Tính penalty cho từng cột
         for (int j = 0; j < n; j++) {
-            if (CauConLai[j] == 0) {continue;} // Bỏ qua cột đã hết cầu
+            if (CauConLai[j] == 0) continue; // Bỏ qua cột đã hết cầu
 
             int Min1 = INTMAX, Min2 = INTMAX;
             for (int i = 0; i < m; i++) {
-                if (CungConLai[i] == 0) {continue;} // Bỏ qua hàng đã hết cung
+                if (CungConLai[i] == 0) continue; // Bỏ qua hàng đã hết cung
 
                 if (ChiPhi[i][j] < Min1) {
                     Min2 = Min1;
                     Min1 = ChiPhi[i][j];
-                } else if (ChiPhi[i][j] < Min2) {
+                }
+                else if (ChiPhi[i][j] < Min2) {
                     Min2 = ChiPhi[i][j];
                 }
             }
@@ -683,7 +681,7 @@ void PhuongPhapVogel() {
         }
 
         // Nếu không còn penalty (đã phân phối xong)
-        if (MaxPenalty == -1) {break;}
+        if (MaxPenalty == -1) break;
 
         // Tìm ô có chi phí nhỏ nhất trong hàng/cột có penalty lớn nhất
         int Hang = -1, Cot = -1;
@@ -691,7 +689,7 @@ void PhuongPhapVogel() {
 
         if (Loai == 'H') {
             for (int j = 0; j < n; j++) {
-                if (CauConLai[j] == 0) {continue;}
+                if (CauConLai[j] == 0) continue;
                 if (ChiPhi[HangMaxPenalty][j] < MinChiPhi) {
                     MinChiPhi = ChiPhi[HangMaxPenalty][j];
                     Hang = HangMaxPenalty;
@@ -701,7 +699,7 @@ void PhuongPhapVogel() {
         }
         else { // 'C'
             for (int i = 0; i < m; i++) {
-                if (CungConLai[i] == 0) {continue;}
+                if (CungConLai[i] == 0) continue;
                 if (ChiPhi[i][CotMaxPenalty] < MinChiPhi) {
                     MinChiPhi = ChiPhi[i][CotMaxPenalty];
                     Hang = i;
@@ -720,27 +718,27 @@ void PhuongPhapVogel() {
     }
 }
 
-int parent[10005] = {0};
-int sz[10005] = {0};
-int ODaChon[100][100];
+int parent[MAX * MAX] = {0};
+int sz[MAX * MAX] = {0};
+int ODaChon[MAX][MAX];
 
-void KhoiTao(){
-    for (int i = 0; i < n + m; i++){
+void KhoiTao() {
+    for (int i = 0; i < n + m; i++) {
         parent[i] = i;
         sz[i] = 1;
     }
 }
 
-int Tim(int i){
+int Tim(int i) {
     if (i == parent[i]) return i;
     return parent[i] = Tim(parent[i]);
 }
 
-int KtraNoi(int x, int y){
+int KtraNoi(int x, int y) {
     x = Tim(x);
     y = Tim(y);
     if (x == y) return 0;
-    if (sz[x] > sz[y]){
+    if (sz[x] > sz[y]) {
         sz[x] += sz[y];
         parent[y] = x;
     }
@@ -751,18 +749,18 @@ int KtraNoi(int x, int y){
     return 1;
 }
 
-void XuLySuyBien(int SoOChon){
+void XuLySuyBien(int SoOChon) {
     int SuyBien = 1;
     KhoiTao();
-    for(int i = 0; i < m; i++){
-        for (int j = 0; j < n; j++){   
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {   
             if (ODaChon[i][j] > 0) KtraNoi(i, j + m);
         }
     }
-    while (SoOChon < m + n - 1){         
-        for (int i = 0; i < m && SuyBien; i++){
-            for (int j = 0; j < n && SuyBien; j++){
-                if (PhanPhoi[i][j] == 0 && KtraNoi(i, j + m)){ //dọc(cung) thì đánh số từ 0 đến m - 1, còn ngang(cầu) thì đánh số từ 0 đến m + n - 1;
+    while (SoOChon < m + n - 1) {         
+        for (int i = 0; i < m && SuyBien; i++) {
+            for (int j = 0; j < n && SuyBien; j++) {
+                if (PhanPhoi[i][j] == 0 && KtraNoi(i, j + m)) { //dọc(cung) thì đánh số từ 0 đến m - 1, còn ngang(cầu) thì đánh số từ 0 đến m + n - 1;
                     ODaChon[i][j] = 1; // 2 kí hiệu cho ô suy biến
                     SoOChon++;
                     if (SoOChon == m + n - 1) SuyBien = 0; // nếu như = thì không còn suy biến nữa
@@ -772,11 +770,11 @@ void XuLySuyBien(int SoOChon){
     }
 }
 
-void TimDuongDi(int start, int end, int MangKq[], int SoLuong, int DaTham[], int *SoLuongThat, int *DaTimThay){
+void TimDuongDi(int start, int end, int MangKq[], int SoLuong, int DaTham[], int *SoLuongThat, int *DaTimThay) {
     if (*DaTimThay) return;
     MangKq[SoLuong] = start;    
 
-    if (start == end){
+    if (start == end) {
         *DaTimThay = 1;
         SoLuong++;
         MangKq[SoLuong] = MangKq[0];
@@ -784,17 +782,17 @@ void TimDuongDi(int start, int end, int MangKq[], int SoLuong, int DaTham[], int
         return;
     }
     DaTham[start] = 1;
-    if (start < m){
-        for (int j = 0; j < n; j++){
+    if (start < m) {
+        for (int j = 0; j < n; j++) {
             if (m + j == end && SoLuong < 2) continue;
-            if (ODaChon[start][j] > 0 && !DaTham[m + j]){
+            if (ODaChon[start][j] > 0 && !DaTham[m + j]) {
                 // printf("st = %d, j = %d, %d\n",start, j, ODaChon[start][j]);
                 TimDuongDi(m + j, end, MangKq, SoLuong + 1, DaTham, SoLuongThat, DaTimThay);
             }
         }
     }
-    else if (start < m + n){
-        for (int i = 0; i < m; i++){
+    else if (start < m + n) {
+        for (int i = 0; i < m; i++) {
             if (i == end && SoLuong < 1) continue;
             if (ODaChon[i][start - m] > 0 && !DaTham[i] && !(i == end && SoLuong < 4)) {
                 TimDuongDi(i, end, MangKq, SoLuong + 1, DaTham, SoLuongThat, DaTimThay);
@@ -803,75 +801,61 @@ void TimDuongDi(int start, int end, int MangKq[], int SoLuong, int DaTham[], int
     }
 }
 
-void BienDoi(int MangKq[], int SoLuong){
+void BienDoi(int MangKq[], int SoLuong) {
     int MIN = INTMAX, x, y;
     int xGia, yGia;
     // tìm min trong các ô trừ 
-    for (int i = 0; i < SoLuong - 1; i++){
-        if (MangKq[i] < MangKq[i + 1]){
-            x = MangKq[i]; y = MangKq[i + 1] - m; // xét các ô trong chu trình có ô suy biến không 
-            if (i % 2 == 0 && PhanPhoi[x][y] < MIN){ // xét các ô trừ, tìm min của các ô trừ đó.
-                xGia = x;
-                yGia = y;
-                MIN = PhanPhoi[x][y];
-            }
-        }
-        else if(MangKq[i] > MangKq[i + 1]){
-            x = MangKq[i + 1]; y = MangKq[i] - m; 
-            if (i % 2 == 0 && PhanPhoi[x][y] < MIN){ // xét các ô trừ, tìm min của các ô trừ đó.
-                xGia = x;
-                yGia = y;
-                MIN = PhanPhoi[x][y];
-            }
+    for (int i = 0; i < SoLuong - 1; i++) {
+        if (MangKq[i] < MangKq[i + 1]) {x = MangKq[i]; y = MangKq[i + 1] - m;} // xét các ô trong chu trình có ô suy biến không     
+        else {x = MangKq[i + 1]; y = MangKq[i] - m;   }         
+        if (i % 2 == 0 && PhanPhoi[x][y] < MIN) { // xét các ô trừ, tìm min của các ô trừ đó.
+            xGia = x;
+            yGia = y;
+            MIN = PhanPhoi[x][y];
         }
     }       
 
     int HeSo;
-    for (int i = 0; i < SoLuong - 1; i++){
+    for (int i = 0; i < SoLuong - 1; i++) {
         if (i % 2 == 0) HeSo = -MIN;
         else HeSo = MIN;
-        if (MangKq[i] < MangKq[i + 1]){
-            x = MangKq[i]; y = MangKq[i + 1] - m;
-            PhanPhoi[x][y] += HeSo;
-        }
-         else if(MangKq[i] > MangKq[i + 1]){
-            x = MangKq[i + 1]; y = MangKq[i] - m;
-            PhanPhoi[x][y] += HeSo;
-        }
+        if (MangKq[i] < MangKq[i + 1]) {x = MangKq[i]; y = MangKq[i + 1] - m;}
+        else  {x = MangKq[i + 1]; y = MangKq[i] - m;}
+        PhanPhoi[x][y] += HeSo;
     }
     ODaChon[xGia][yGia] = 0;
 }   
 
-void PhuongPhapTheVi(){
+void PhuongPhapTheVi() {
     int SoOChon = 0;
-    for(int i = 0; i < m; i++){
-        for (int j = 0; j < n; j++){
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
             ODaChon[i][j] = 0;
-            if (PhanPhoi[i][j] > 0){
+            if (PhanPhoi[i][j] > 0) {
                 ODaChon[i][j] = 1;
                 SoOChon++;
             }
         }   
     }
-    if (SoOChon < m + n - 1) XuLySuyBien(SoOChon);
+    if (SoOChon < m + n - 1) {XuLySuyBien(SoOChon);}
     int Ktra = 1;
-    while(Ktra){
+    while (Ktra) {
         Ktra = 0;
         int u[MAX], v[MAX];
-        for (int i = 0; i <= MAX; i++){
+        for (int i = 0; i <= MAX; i++) {
             u[i] = v[i] = INTMAX;
         }
         u[0] = 0;
         int DemU = 1, DemV = 0;
-        while(DemU != m || DemV != n){
-            for (int i = 0; i < m; i++){
-                for (int j = 0; j < n; j++){
-                    if (ODaChon[i][j] > 0){
-                        if (u[i] != INTMAX && v[j] == INTMAX){
+        while (DemU != m || DemV != n) {
+            for (int i = 0; i < m; i++) {
+                for (int j = 0; j < n; j++) {
+                    if (ODaChon[i][j] > 0) {
+                        if (u[i] != INTMAX && v[j] == INTMAX) {
                             v[j] = ChiPhi[i][j] - u[i];
                             DemV++;
                         }
-                        else if (u[i] == INTMAX && v[j] != INTMAX){
+                        else if (u[i] == INTMAX && v[j] != INTMAX) {
                             u[i] = ChiPhi[i][j] - v[j];
                             DemU++;
                         }
@@ -883,13 +867,13 @@ void PhuongPhapTheVi(){
         int denta[MAX][MAX];
         int dentaCauMin, dentaCungMin, dentaMin = INTMAX;
 
-        for (int i = 0; i < m; i++){
-            for (int j = 0; j < n; j++){
-                if (PhanPhoi[i][j] == 0){
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (PhanPhoi[i][j] == 0) {
                     denta[i][j] = ChiPhi[i][j] - u[i] - v[j];
-                    if (denta[i][j] < 0){ // chưa tối ưu 
+                    if (denta[i][j] < 0) { // chưa tối ưu 
                         Ktra = 1; 
-                        if (denta[i][j] < dentaMin){ // lưu lại ô chọn tìm năng để có thể tra cứu nhanh trong trường hợp không tối ưu
+                        if (denta[i][j] < dentaMin) { // lưu lại ô chọn tìm năng để có thể tra cứu nhanh trong trường hợp không tối ưu
                             dentaMin = denta[i][j];
                             dentaCungMin = i;
                             dentaCauMin = j;
@@ -899,18 +883,18 @@ void PhuongPhapTheVi(){
             }
         }
 
-        if (Ktra == 0){
+        if (Ktra == 0) {
             // printf("Phương án đã tối ưu!\n\n");
             break;
         }
         ODaChon[dentaCungMin][dentaCauMin] = 1;
         
         int MangKq[MAX] = {0}, DaTham[MAX] = {0};   
-        int SoLuong = 0;
+        int SoLuongThat = 0;
         int DaTimThay = 0;
-        TimDuongDi(dentaCungMin, dentaCauMin + m, MangKq, 0, DaTham, &SoLuong, &DaTimThay);
+        TimDuongDi(dentaCungMin, dentaCauMin + m, MangKq, 0, DaTham, &SoLuongThat, &DaTimThay);
         
-        BienDoi(MangKq, SoLuong);  
+        BienDoi(MangKq, SoLuongThat);  
     }
 }
 
@@ -997,7 +981,7 @@ void NhapNhay(int x, int y, const char* text, int blinkCount) {
     printf(">> %s", text);
 }
 
-int Menu(){
+int Menu() {
     SetConsoleOutputCP(65001); // set viết được tiếng việt
     int selectedOption = 0; // được chọn
     char key; // từ vừa được nhập vào
@@ -1044,7 +1028,6 @@ int Menu(){
                 printf("  %s", Menu[i]);
             }
         }
-
         
         key = _getch();
         int Enter = FALSE;
@@ -1059,7 +1042,6 @@ int Menu(){
                     break;
             }
         }
-        
         else if (key == 13) { //  Enter
             Beep(2000, 200);
             NhapNhay(10 + 20 + 5, 6 + selectedOption + 7 + 2, Menu[selectedOption], 2);
@@ -1074,7 +1056,7 @@ int Menu(){
             else {
                 Enter = TRUE;
                 system("cls");
-                switch(selectedOption){
+                switch(selectedOption) {
                     case 0:
                         PhuongPhapGocTayBac();
                         break;
@@ -1154,7 +1136,7 @@ int LuaChon() {
     return 0;
 }
 
-void CachNhap(){
+void CachNhap() {
     SetConsoleOutputCP(65001); // set viết được tiếng việt
     int selectedOption = 0; // được chọn
     char key; // từ vừa được nhập vào
@@ -1218,7 +1200,7 @@ void CachNhap(){
             Enter = TRUE;
             Beep(2000, 200);
             NhapNhay(10 + 20 + 5, 6 + selectedOption + 7 + 2, LuaChonNhap[selectedOption], 2);
-            if (selectedOption == 0){
+            if (selectedOption == 0) {
                 freopen("0input.txt", "r", stdin);
                 Nhap();
                 freopen("CON", "r", stdin);
