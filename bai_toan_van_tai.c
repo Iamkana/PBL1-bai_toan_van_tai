@@ -718,20 +718,20 @@ void PhuongPhapVogel() {
     }
 }
 
-int parent[MAX * MAX] = {0};
+int Cha[MAX * MAX] = {0};
 int sz[MAX * MAX] = {0};
 int ODaChon[MAX][MAX];
 
 void KhoiTao() {
     for (int i = 0; i < n + m; i++) {
-        parent[i] = i;
+        Cha[i] = i;
         sz[i] = 1;
     }
 }
 
 int Tim(int i) {
-    if (i == parent[i]) return i;
-    return parent[i] = Tim(parent[i]);
+    if (i == Cha[i]) return i;
+    return Cha[i] = Tim(Cha[i]);
 }
 
 int KtraNoi(int x, int y) {
@@ -740,11 +740,11 @@ int KtraNoi(int x, int y) {
     if (x == y) return 0;
     if (sz[x] > sz[y]) {
         sz[x] += sz[y];
-        parent[y] = x;
+        Cha[y] = x;
     }
     else{
         sz[y] += sz[x];
-        parent[x] = y;
+        Cha[x] = y;
     }
     return 1;
 }
