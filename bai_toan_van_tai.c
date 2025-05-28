@@ -11,6 +11,7 @@
 #define DoDam    4
 
 int m, n, Cung[MAX], Cau[MAX], ChiPhi[MAX][MAX], PhanPhoi[MAX][MAX], KhongCanBang = 0;
+int Cha[MAX * MAX] = {0}, sz[MAX * MAX] = {0}, ODaChon[MAX][MAX];
 
 // định hướng cải tiến: thêm lựa chọn nhập vào file hoặc nhập = tay
 // nhập bằng tay sẽ chọn = cách có dấu [ ] để nhập vào 
@@ -718,10 +719,6 @@ void PhuongPhapVogel() {
     }
 }
 
-int Cha[MAX * MAX] = {0};
-int sz[MAX * MAX] = {0};
-int ODaChon[MAX][MAX];
-
 void KhoiTao() {
     for (int i = 0; i < n + m; i++) {
         Cha[i] = i;
@@ -750,21 +747,18 @@ int KtraNoi(int x, int y) {
 }
 
 void XuLySuyBien(int SoOChon) {
-    int SuyBien = 1;
     KhoiTao();
     for (int i = 0; i < m; i++) {
         for (int j = 0; j < n; j++) {   
-            if (ODaChon[i][j] > 0) KtraNoi(i, j + m);
+            if (ODaChon[i][j] > 0) {KtraNoi(i, j + m);}
         }
-    }
-    while (SoOChon < m + n - 1) {         
-        for (int i = 0; i < m && SuyBien; i++) {
-            for (int j = 0; j < n && SuyBien; j++) {
-                if (PhanPhoi[i][j] == 0 && KtraNoi(i, j + m)) { //dọc(cung) thì đánh số từ 0 đến m - 1, còn ngang(cầu) thì đánh số từ 0 đến m + n - 1;
-                    ODaChon[i][j] = 1; // 2 kí hiệu cho ô suy biến
-                    SoOChon++;
-                    if (SoOChon == m + n - 1) SuyBien = 0; // nếu như = thì không còn suy biến nữa
-                }
+    }           
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            if (ODaChon[i][j] == 0 && KtraNoi(i, j + m)) { //dọc(cung) thì đánh số từ 0 đến m - 1, còn ngang(cầu) thì đánh số từ 0 đến m + n - 1
+                ODaChon[i][j] = 1; // 1 kí hiệu cho ô chọn
+                SoOChon++;
+                if (SoOChon == m + n - 1) return; // nếu như = thì không còn suy biến nữa
             }
         }
     }
