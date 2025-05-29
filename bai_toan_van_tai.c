@@ -710,7 +710,7 @@ void PhuongPhapVogel() {
         }
 
         // Phân phối vào ô (Hang, Cot)
-        int SoLuong = (CungConLai[Hang] < CauConLai[Cot]) ? CungConLai[Hang] : CauConLai[Cot];
+        int SoLuong = (CauConLai[Cot] < CungConLai[Hang]) ? CauConLai[Cot] : CungConLai[Hang];
         PhanPhoi[Hang][Cot] = SoLuong;
 
         // Cập nhật lại cung và cầu
